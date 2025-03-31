@@ -1,0 +1,49 @@
+def caixa_eletronico():
+    conta_correta = "000323"
+    senha_correta = "9883"
+    saldo = 1000.00  # Saldo inicial da conta
+
+    # Solicita número da conta e senha
+    conta = input("Número da conta: ")
+    senha = input("Senha: ")
+
+    # Verifica se os dados estão corretos
+    if conta != conta_correta or senha != senha_correta:
+        print("Conta ou senha inválidos. Programa encerrado.")
+        return
+
+    print(f"Saldo disponível: R$ {saldo:.2f}")
+
+    while True:
+        # Solicita valor para saque
+        valor_saque = float(input("Valor do saque (R$): "))
+
+        # Verifica se o saldo é suficiente
+        if valor_saque > saldo:
+            print("Saldo insuficiente.")
+        # Verifica se o valor pode ser sacado com as notas disponíveis
+        elif valor_saque % 10 != 0:
+            print("Valor inválido. Use apenas notas de 100, 50, 20 e 10.")
+        else:
+            # Calcula quantas notas de cada valor serão entregues
+            notas_100 = valor_saque // 100
+            valor_saque %= 100
+            notas_50 = valor_saque // 50
+            valor_saque %= 50
+            notas_20 = valor_saque // 20
+            valor_saque %= 20
+            notas_10 = valor_saque // 10
+
+            # Exibe as notas e atualiza o saldo
+            print(f"Notas entregues: {notas_100} de 100, {notas_50} de 50, {notas_20} de 20 e {notas_10} de 10.")
+            saldo -= valor_saque
+            print(f"Novo saldo: R$ {saldo:.2f}")
+
+        # Pergunta se o usuário deseja realizar outro saque
+        resposta = input("Deseja realizar outro saque? (S/N): ")
+        if resposta.upper() != "S":
+            break
+
+    print("transação encerrada!" " tenha um boa dia!!! .")
+
+caixa_eletronico()
