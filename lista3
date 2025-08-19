@@ -1,0 +1,20 @@
+produtos = []
+print('Quer adicionar produto?(s/n)')
+Quer_adicionar = input().lower()
+if Quer_adicionar == 'n':
+    print('Não a nada')
+while True:
+    nome = input('Nome do produto: ')
+    validade = input('Validade do produto: ')
+    preço = input('Preço do produto: ')
+    produtos.append ({'Nome': nome, 'Validade': validade, 'Preço': preço})
+    print(f'Produto: {nome} , Validade: {validade} , Preço: {preço}')
+    print('Adicionado com sucesso')
+    print('Quer adicionar mais produtos?(s/n)')
+    resposta = input().lower()
+    if resposta == 'n' :
+        break
+
+print('/nlista de produtos adicionados: ')
+for produto in produtos:
+    print(f'Produto : {produto['nome']},Data de Validade: {validade['validade']}, Preço: {preço['preço']}')
